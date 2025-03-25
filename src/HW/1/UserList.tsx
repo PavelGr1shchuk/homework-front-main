@@ -26,8 +26,7 @@ export const UserList = (props: UserListPropsType) => {
          <strong>{user.name}</strong>
          (Age: {user.age})
          <strong> Address:</strong>
-        {user.address.street},
-         {user.address.city}
+        {user.address.street}, {user.address.city}
           </li>
         ))}
     </ul>
