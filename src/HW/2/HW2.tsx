@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { UserList2 } from './UserList2';
+import { log } from 'console';
 
 export type AddressType = {
   street: string;
@@ -10,11 +11,11 @@ export type UserType = {
   id: number;
   name: string;
   age: number;
-  address: any; // пропиши типизацию
+  address: {street: string, city: string}; // пропиши типизацию
 };
 
 export type UsersObjectType = {
-  myFriends: any; // пропиши типизацию
+  myFriends: Array<UserType>; // пропиши типизацию
 };
 
 export const HW2 = () => {
@@ -47,7 +48,10 @@ export const HW2 = () => {
   let [currentUsers, setCurrentUsers] = useState<UsersObjectType>(users);
 
   const filterUsers = () => {
-    const filteredUsers = 'НУЖНО ПРОФИЛЬТРОВАТЬ ДРУЗЕЙ. ОСТАВЛЯЕМ ТОЛЬКО ТЕХ, КОТОРЫЕ ЖИВУТ В ГОРОДЕ LOS ANGELES';
+     const filteredUsers = users.myFriends.filter((user) => {
+      return user.address.city === 'Los Angeles'
+    }) ;
+    console.log(filteredUsers, 'test')
     setCurrentUsers({ myFriends: filteredUsers });
   };
 
